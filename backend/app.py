@@ -4,7 +4,12 @@ from flask_cors import CORS
 from routes.cv_routes import cv_bp
 
 app = Flask(__name__)
-CORS(app)
+
+CORS(app, resources={
+    r"/api/*": {
+        "origins": "https://cv-analyzer-app.onrender.com"
+    }
+})
 
 app.register_blueprint(cv_bp, url_prefix="/api/cv")
 
